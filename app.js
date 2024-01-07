@@ -7,10 +7,18 @@ import UserRoute from './Routes/UserRoute.js'
 import PostRoute from './Routes/PostRoute.js'
 import cors from "cors";
 import jwt  from "jsonwebtoken";
-// Routes
+// import path from "path";
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+import path from "path";
 
+// Get the directory name of the current module file
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+// Routes
 const app = express();
-app.use(cors())
+app.use(cors());
 
 dotenv.config();
 
@@ -42,6 +50,12 @@ else{
   app.use('/auth', AuthRoute)
   app.use('/user',middleware, UserRoute)
   app.use('/post',middleware, PostRoute)
+
+  app.get("/", (req, res) => {
+    app.use(express.static(path.resolve(__dirname, "frontend", "build")));
+    res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"));
+    });
+    
 
 mongoose
   .connect(process.env.MONGO_DB, {

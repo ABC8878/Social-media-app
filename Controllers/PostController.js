@@ -68,7 +68,7 @@ export const likePost = async (req, res) => {
   const postid = req.params.id;
   const { userId } = req.body;
 
-  console.log(userId);
+ // console.log(userId);
 
   try {
     const post = await PostModel.findById(postid);

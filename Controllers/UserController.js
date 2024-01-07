@@ -59,7 +59,7 @@ export const deleteUser = async (req, res) => {
   const id = req.params.id;
 
   const currentUserId  = req.body.userId;
-console.log(req.body,currentUserId);
+//console.log(req.body,currentUserId);
   if (currentUserId === id ) {
     try {
       await UserModel.findByIdAndDelete(id);
@@ -74,7 +74,7 @@ console.log(req.body,currentUserId);
 
 // Follow a User
 export const followUser = async (req, res) => {
-  console.log("inside followuser backend")
+  //console.log("inside followuser backend")
   const id = req.params.id;
 
   const currentUserId  = req.body.id;
@@ -85,7 +85,7 @@ export const followUser = async (req, res) => {
     try {
       const followUser = await UserModel.findById(id);
       const followingUser = await UserModel.findById(currentUserId);
-      console.log(followUser,followingUser)
+      //console.log(followUser,followingUser)
 
       if (!followUser.followers.includes(currentUserId)) {
         followUser.followers.push(currentUserId)
