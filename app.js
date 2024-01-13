@@ -7,6 +7,7 @@ import UserRoute from './Routes/UserRoute.js'
 import PostRoute from './Routes/PostRoute.js'
 import cors from "cors";
 import jwt  from "jsonwebtoken";
+//updated index.html
 // import path from "path";
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
